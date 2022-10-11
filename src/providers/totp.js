@@ -13,7 +13,9 @@ class TOTP {
             body: "",
             redirect: 'follow'
         })
-        this.token = await response.text();
+        const jsonResponse = await response.json();
+        this.token = jsonResponse['token'];
+        console.log(this.token);
     };
 
     registerUser = (email) => {
