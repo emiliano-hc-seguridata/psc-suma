@@ -1,13 +1,13 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import React from 'react';
-import Navigation from 'Common/navigation';
-import Dashboard from 'Dashboard/dashboard';
-import Login from 'Auth/login';
-import AuthProvider from 'Auth/auth_provider';
-import NoMatch from 'Common/no_match';
-import ProtectedRoute from 'Common/protected_route';
-import Signup from 'Auth/signup';
+import Navigation from 'common/navigation';
+import Dashboard from 'dashboard/dashboard';
+import Login from 'auth/login';
+import AuthProvider from 'auth/auth_provider';
+import NoMatch from 'common/no_match';
+import ProtectedRoute from 'common/protected_route';
+import Signup from 'auth/signup';
 
 function App() {
 

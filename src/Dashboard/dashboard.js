@@ -1,4 +1,4 @@
-import { useAuth } from "Auth/auth_provider";
+import { useAuth } from "auth/auth_provider";
 import Database from "providers/db";
 import SumaProvider from "providers/suma";
 import React, { useEffect, useState } from "react";
@@ -19,7 +19,7 @@ const Dashboard = () => {
     };
 
     getDashboardValues();
-  },);
+  },[]);
 
   const handleRowClick = (id) => {
   };

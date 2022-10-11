@@ -1,13 +1,20 @@
 class TOTP {
     authorization = "Basic cHNjU2VndXJpZGF0YUU6UHpDPHAwenpXT3JEPg==";
+    baseURL = "https://smtp.seguridata.com:5002/totp/"
     token = "";
     app = "PSC";
     imgSize = "8";
 
+    getJsonHeaders = () => {
+        const myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        return myHeaders;
+    }
+
     systemLogin = async () => {
         const myHeaders = new Headers();
         myHeaders.append("Authorization", this.authorization);
-        const response = await fetch("https://smtp.seguridata.com:5002/totp/login", {
+        const response = await fetch(this.baseURL + "login", {
             method: 'POST',
             headers: myHeaders,
             body: "",
@@ -15,28 +22,40 @@ class TOTP {
         })
         const jsonResponse = await response.json();
         this.token = jsonResponse['token'];
-        console.log(this.token);
     };
 
-    registerUser = (email) => {
-        var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-        var body = JSON.stringify({
+    registerUser = async (email) => {
+        const body = JSON.stringify({
             "user": email,
             "app": this.app,
             "imgsize": this.imgSize
         });
 
-
-        fetch("https://smtp.seguridata.com:5002/totp/register?token=" + this.token, {
+        const response = await fetch(this.baseURL + "register?token=" + this.token, {
             method: 'POST',
-            headers: myHeaders,
+            headers: this.getJsonHeaders(),
             body,
             redirect: 'follow'
         })
-            .then(response => response.text())
-            .then(result => console.log(result))
-            .catch(error => console.log('error', error));
+        const jsonResponse = await response.json();
+        return jsonResponse.hasOwnProperty('b64QR') ? jsonResponse['b64QR'] : '';
+    }
+
+    validateAccess = async (totpCode, email) => {
+        const body = JSON.stringify({
+            "user": email,
+            "app": this.app,
+            "pin": totpCode
+        });
+
+        const response = await fetch(this.baseURL + "validate?token=" + this.token, {
+            method: 'POST',
+            headers: this.getJsonHeaders(),
+            body,
+            redirect: 'follow'
+        });
+        const jsonResponse = await response.json();
+        return jsonResponse['errorCode'] === 0
     }
 
 }
