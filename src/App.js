@@ -12,7 +12,6 @@ import Signup from 'auth/signup';
 function App() {
 
   return (
-    <div>
       <AuthProvider >
         <Navigation />
         <Routes>
@@ -28,7 +27,6 @@ function App() {
           <Route path="*" element={<NoMatch />} />
         </Routes>
       </AuthProvider>
-    </div>
   );
 }
 

@@ -8,6 +8,7 @@ const Dashboard = () => {
   const { userUID, userEmail } = useAuth();
   const database = new Database(userUID, userEmail);
   useEffect(() => {
+    document.body.style.backgroundColor = 'white';
     const getDashboardValues = async () => {
       const querySnapshot = await database.getDashboardVerifications();
       const tempValues = [];
@@ -19,7 +20,7 @@ const Dashboard = () => {
     };
 
     getDashboardValues();
-  },[]);
+  }, []);
 
   const handleRowClick = (id) => {
   };
@@ -57,6 +58,15 @@ const Dashboard = () => {
     <p>
       Prueba del SDK de Suma para Seguridata
     </p>
+    <div className="dashboard-header">
+      <div>
+        <input></input>
+        <button></button>
+      </div>
+      <button id="create" onClick={handleCreateVerification}>
+        Crear Verificación
+      </button>
+    </div>
     <table className="dashboard-table">
       <thead className="dashboard-table-header">
         <tr>
@@ -82,9 +92,6 @@ const Dashboard = () => {
         }
       </tbody>
     </table>
-    <button id="create" onClick={handleCreateVerification}>
-      Crear Verificación
-    </button>
 
     <button id="create" onClick={bioProvider.getStatus}>
       Status

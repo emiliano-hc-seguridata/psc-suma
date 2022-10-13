@@ -1,3 +1,19 @@
+a,
+a:visited,
+a:hover,
+a:active {
+  color: white;
+}
+
+h2 {
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin-bottom: .5rem;
+}
+
 .centered-input {
   box-sizing: border-box;
   margin: auto;
@@ -7,6 +23,8 @@
   padding: .5rem;
   border-width: 0rem;
   margin-bottom: 1rem;
+  border-color: gray;
+  border-width: .1rem;
 }
 
 /*********************************
@@ -38,7 +56,7 @@ nav a {
 .login-div {
   margin: auto;
   display: block;
-  background-color: #6c757d;
+  background-color: white;
   width: fit-content;
   height: fit-content;
   padding: 2rem;
@@ -50,12 +68,12 @@ nav a {
 .login-button {
   margin-top: 3rem;
   color: white;
-  background-color: #8dbb00;
-  padding: .2rem;
+  background-color: #6f7608;
+  padding: .5rem;
 }
 
 .login-span {
-  color: #8dbb00;
+  color: #6f7608;
   text-align: start;
   font-size: small;
 }
@@ -64,9 +82,16 @@ nav a {
 /*************************************
 s           Dashboard                +
 *************************************/
+.dashboard-header {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  margin-bottom: 2rem;
+}
 
 .dashboard-table {
-  width: 80vw;
+  width: 90vw;
   margin: auto;
   text-align: center;
   border-spacing: 0px;

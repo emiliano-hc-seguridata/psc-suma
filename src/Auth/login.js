@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAuth } from 'auth/auth_provider';
 import TOTP from '../providers/totp';
-import { async } from "@firebase/util";
+import Colors from "colors/colors";
 
 const Login = () => {
     const { onLogin } = useAuth();
@@ -34,6 +34,7 @@ const Login = () => {
     };
 
     useEffect(() => {
+        document.body.style.backgroundColor = Colors.darkGreen;
         const fetchData = async () => {
             await totpProvider.systemLogin();
         }
@@ -46,7 +47,8 @@ const Login = () => {
                 {
                     !hasTOTP && <img src={otpB64} alt="qrCode" />
                 }
-                <label>Ingresa tu TOTP<input type="text" pattern="\d*" maxLength={6} value={otp} onChange={evt => { setOTP(evt.target.value) }} ></input></label>
+                <label>Ingresa tu TOTP</label>
+                <input  className="centered-input"type="text" pattern="\d*" maxLength={6} value={otp} onChange={evt => { setOTP(evt.target.value) }} ></input>
                 <button className="centered-input login-button" onClick={loginUser}>Iniciar sesión</button>
             </div>
         );
@@ -65,10 +67,9 @@ const Login = () => {
 
     return (
         <div className="login" >
-
             <div className="login-div">
+                <h2>Bienvenido</h2>
                 {displayTOTP ? otpDiv() : loginForm()}
-
             </div>
         </div>
     );
