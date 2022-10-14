@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useAuth } from 'auth/auth_provider';
+import { useAuth } from 'Auth/auth_provider';
 import TOTP from '../providers/totp';
 import Colors from "colors/colors";
 
