@@ -2,7 +2,7 @@ import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import React from 'react';
 import Navigation from 'Common/navigation';
-import Dashboard from 'dashboard/dashboard';
+import Dashboard from 'Dashboard/dashboard';
 import Login from 'Auth/login';
 import AuthProvider from 'Auth/auth_provider';
 import NoMatch from 'Common/no_match';
